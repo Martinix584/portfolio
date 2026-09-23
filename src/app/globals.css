@@ -26,7 +26,7 @@
   --color-led: var(--green);
   --color-alarm: var(--red);
   --color-steel: var(--steel);
-  --font-sans: var(--font-plex-sans);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-plex-mono);
   --font-display: var(--font-display);
 }
@@ -40,7 +40,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-plex-sans), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   overflow-x: hidden;
 }
 

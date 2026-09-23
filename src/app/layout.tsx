@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Big_Shoulders, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Barlow, Barlow_Condensed, IBM_Plex_Mono } from "next/font/google";
 import { LangProvider } from "@/lib/i18n";
 import "./globals.css";
 
-const display = Big_Shoulders({
+// Barlow: familia emparentada con DIN, la tipografía de la señalética industrial.
+const display = Barlow_Condensed({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "800", "900"],
+  weight: ["600", "700", "800", "900"],
 });
 
-const plexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
+const body = Barlow({
+  variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -45,7 +46,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${display.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}>
+    <html lang="es" className={`${display.variable} ${body.variable} ${plexMono.variable} antialiased`}>
       <body>
         <LangProvider>{children}</LangProvider>
       </body>
