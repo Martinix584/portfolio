@@ -9,7 +9,7 @@ import { useLang } from "@/lib/i18n";
 export function Footer() {
   const { t } = useLang();
   return (
-    <footer className="relative border-t border-line bg-bg">
+    <footer id="contacto" className="relative border-t border-line bg-bg">
       <div className="hazard h-3" />
       <div className="mx-auto max-w-6xl px-4 py-20">
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-safety">{t(ui.footer.label)}</p>

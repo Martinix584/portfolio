@@ -6,18 +6,10 @@ export type L = Record<Lang, string>;
 /** Etiqueta que puede ser igual en ambos idiomas (string) o traducida (L). */
 export type Tag = string | L;
 
-export type Area =
-  | "backend"
-  | "web"
-  | "mobile"
-  | "ai"
-  | "iot"
-  | "devops"
-  | "automation";
 
 export const profile = {
   name: "Martín Porollan",
-  shortName: "M. POROLLAN",
+  brand: { main: "MP", accent: "·FACTORY" },
   email: "mporollan@gmail.com",
   phone: "+54 9 261 515 4977",
   whatsapp: "5492615154977",
@@ -36,7 +28,7 @@ export const profile = {
   },
 };
 
-export type SceneId = "treasury" | "fiscal" | "lab" | "depot" | "production" | "datacenter";
+export type SceneId = "treasury" | "fiscal" | "lab" | "depot" | "production" | "service" | "datacenter";
 
 export type Station = {
   id: string;
@@ -50,11 +42,8 @@ export type Station = {
   solution: L;
   stack: Tag[];
   impact: { value: string; label: L }[];
-  areas: Area[];
   /** Comparación antes/después opcional para el slider. */
   beforeAfter?: { before: L; after: L };
-  /** Bullet corto para el CV a medida. */
-  cvLine: L;
 };
 
 export const rawMaterial = {
@@ -96,11 +85,6 @@ export const stations: Station[] = [
       before: { es: "~5 h/semana de trabajo manual", en: "~5 h/week of manual work" },
       after: { es: "1 descarga de CSV", en: "1 CSV download" },
     },
-    areas: ["backend", "automation"],
-    cvLine: {
-      es: "Motor en Java de imputación automática de pagos y conciliación bancaria por CUIT para 600+ clientes: redujo el tiempo manual en más del 50% (de ~5 h semanales a una descarga de CSV).",
-      en: "Java engine for automated payment posting and bank reconciliation by tax ID across 600+ clients: cut manual time by over 50% (from ~5 h/week to a single CSV download).",
-    },
   },
   {
     id: "arca",
@@ -122,11 +106,6 @@ export const stations: Station[] = [
       { value: "150+", label: { es: "facturas/mes", en: "invoices/month" } },
       { value: "100%", label: { es: "cumplimiento fiscal", en: "fiscal compliance" } },
     ],
-    areas: ["backend", "automation"],
-    cvLine: {
-      es: "Motor de facturación en Python integrado a la API de ARCA (ex-AFIP): 150+ facturas electrónicas mensuales sin errores de carga y con 100% de cumplimiento fiscal.",
-      en: "Python invoicing engine integrated with the ARCA (ex-AFIP) API: 150+ monthly e-invoices with zero data-entry errors and 100% fiscal compliance.",
-    },
   },
   {
     id: "vision",
@@ -152,11 +131,6 @@ export const stations: Station[] = [
       before: { es: "Foto de factura → tipeo a mano", en: "Invoice photo → typed by hand" },
       after: { es: "Foto → JSON → archivo ARCA", en: "Photo → JSON → ARCA file" },
     },
-    areas: ["ai", "automation", "backend"],
-    cvLine: {
-      es: "Pipeline en Python con Vision-Language LLMs para digitalizar facturas de compra y generar automáticamente los archivos de imputación para ARCA.",
-      en: "Python pipeline using Vision-Language LLMs to digitize purchase invoices and auto-generate ARCA tax filing files.",
-    },
   },
   {
     id: "erp",
@@ -164,25 +138,20 @@ export const stations: Station[] = [
     sector: { es: "Depósito y logística", en: "Warehouse & logistics" },
     scene: "depot",
     kicker: { es: "Full stack", en: "Full stack" },
-    title: { es: "ERP en Flutter + Firebase", en: "Flutter + Firebase ERP" },
+    title: { es: "ERP en Flutter + PostgreSQL", en: "Flutter + PostgreSQL ERP" },
     problem: {
       es: "Remitos en papel que se perdían, stock que nadie sabía con certeza y cero trazabilidad de las entregas.",
       en: "Paper delivery notes that got lost, stock nobody was sure about and zero delivery traceability.",
     },
     solution: {
-      es: "Un ERP multiplataforma (móvil y escritorio) con remitos digitales, stock en tiempo real por línea de producto y sincronización en la nube.",
-      en: "A cross-platform ERP (mobile and desktop) with digital delivery notes, real-time stock per product line and cloud sync.",
+      es: "Un ERP multiplataforma con remitos digitales, stock en tiempo real, cobranzas y cuenta corriente. Nació en Firebase y lo migré a PostgreSQL en Supabase: toda la lógica que toca dinero vive en funciones de la base, no en el cliente.",
+      en: "A cross-platform ERP with digital delivery notes, real-time stock, collections and customer accounts. It started on Firebase and I migrated it to PostgreSQL on Supabase: all money-handling logic lives in database functions, not in the client.",
     },
-    stack: ["Flutter", "Dart", "Firebase", "Firestore", "Auth"],
+    stack: ["Flutter", "Dart", "Supabase", "PostgreSQL", { es: "Migración desde Firebase", en: "Firebase migration" }],
     impact: [
       { value: "3600+", label: { es: "remitos digitales", en: "digital delivery notes" } },
       { value: "100%", label: { es: "operación sin papel", en: "paperless operation" } },
     ],
-    areas: ["mobile", "web", "backend"],
-    cvLine: {
-      es: "ERP multiplataforma en Flutter y Firebase: 3.600+ remitos digitales en 6 meses y stock en tiempo real en varias líneas de producto. Llevó la operación a 100% sin papel.",
-      en: "Cross-platform Flutter + Firebase ERP: 3,600+ digital delivery notes in 6 months and real-time stock across product lines. Took the operation 100% paperless.",
-    },
   },
   {
     id: "iot",
@@ -204,15 +173,31 @@ export const stations: Station[] = [
       { value: "4", label: { es: "barreras ópticas", en: "optical barriers" } },
       { value: "24/7", label: { es: "conteo en vivo", en: "live counting" } },
     ],
-    areas: ["iot"],
-    cvLine: {
-      es: "Sistema de telemetría industrial con 2 ESP32 y 4 sensores de barrera óptica para contar la producción en tiempo real y registrar métricas operativas de forma continua.",
-      en: "Industrial telemetry system with 2 ESP32s and 4 optical barrier sensors for real-time production counting and continuous metrics capture.",
+  },
+  {
+    id: "servicio",
+    code: "S-06",
+    sector: { es: "Servicio técnico", en: "Field service" },
+    scene: "service",
+    kicker: { es: "Mobile en campo", en: "Field mobile" },
+    title: { es: "Aquaservice ST: app de servicio técnico", en: "Aquaservice ST: field service app" },
+    problem: {
+      es: "Técnicos sin historial de los equipos, comprobantes hechos a mano y ningún control de qué dispenser estaba en cada cliente o en reparación.",
+      en: "Technicians with no equipment history, handwritten receipts and no record of which dispenser was at which client or in repair.",
     },
+    solution: {
+      es: "Una app para el técnico: escanea el QR de cada dispenser, ve su historial, registra el servicio con fotos, GPS y firma del cliente, e imprime el comprobante por Bluetooth en una impresora térmica. Suma taller de reparaciones, stock de repuestos y reportes en PDF.",
+      en: "An app for the technician: scan each dispenser's QR, see its history, log the service with photos, GPS and the client's signature, and print the receipt over Bluetooth on a thermal printer. Plus a repair workshop, spare-parts stock and PDF reports.",
+    },
+    stack: ["Flutter", "Riverpod", "Firebase", "Cloud Functions", "QR", { es: "Impresión térmica BT", en: "BT thermal printing" }],
+    impact: [
+      { value: "400+", label: { es: "dispensers con QR", en: "QR-tagged dispensers" } },
+      { value: "BT", label: { es: "comprobante en el acto", en: "on-site receipts" } },
+    ],
   },
   {
     id: "ada",
-    code: "S-06",
+    code: "S-07",
     sector: { es: "Centro de datos", en: "Data center" },
     scene: "datacenter",
     kicker: { es: "Arquitectura de sistemas", en: "Systems architecture" },
@@ -230,11 +215,6 @@ export const stations: Station[] = [
       { value: "3", label: { es: "apps integradas", en: "integrated apps" } },
       { value: "MCP", label: { es: "IA sobre los datos", en: "AI over the data" } },
     ],
-    areas: ["backend", "web", "mobile", "ai", "iot", "devops"],
-    cvLine: {
-      es: "Arquitecto y desarrollador líder de la Suite ADA (.NET 8, PostgreSQL, React, Flutter): portal de autogestión, app de fábrica e IoT, app de campo con trazabilidad QR, PLCs e integración de IA vía Model Context Protocol.",
-      en: "Lead architect & developer of the ADA suite (.NET 8, PostgreSQL, React, Flutter): self-service portal, factory & IoT app, field-service app with QR traceability, PLCs and AI integration via Model Context Protocol.",
-    },
   },
 ];
 
@@ -246,121 +226,121 @@ export const finishedProduct = {
   },
 };
 
-export type SkillGroup = { title: L; items: Tag[]; areas: Area[] };
+/** Proyectos propios (Taller de I+D). Todavía sin publicar: no llevan links. */
+export type LabProject = {
+  id: string;
+  code: string;
+  scene: "sports" | "quest";
+  name: string;
+  tagline: L;
+  description: L;
+  features: L[];
+  stack: Tag[];
+  stat: { value: string; label: L };
+};
+
+export const labProjects: LabProject[] = [
+  {
+    id: "sportsapp",
+    code: "P-01",
+    scene: "sports",
+    name: "SportsApp",
+    tagline: { es: "Resultados deportivos en vivo", en: "Live sports scores" },
+    description: {
+      es: "App nativa de Android con backend propio que junta resultados en vivo de fútbol, básquet, Fórmula 1, tenis y pádel. Normaliza varias fuentes de datos en un único modelo y transmite los eventos al instante.",
+      en: "Native Android app with its own backend that brings together live scores for football, basketball, Formula 1, tennis and padel. It normalizes several data providers into a single model and streams events instantly.",
+    },
+    features: [
+      { es: "Marcadores en vivo por Server-Sent Events", en: "Live scores over Server-Sent Events" },
+      { es: "Offline-first: caché local con Room", en: "Offline-first: local cache with Room" },
+      { es: "Backend-for-frontend con sondeo adaptativo", en: "Backend-for-frontend with adaptive polling" },
+      { es: "Widget de pantalla de inicio con Glance", en: "Home-screen widget with Glance" },
+    ],
+    stack: ["Kotlin", "Jetpack Compose", "Room", "Ktor", "SSE", "PostgreSQL"],
+    stat: { value: "5", label: { es: "deportes", en: "sports" } },
+  },
+  {
+    id: "utnquest",
+    code: "P-02",
+    scene: "quest",
+    name: "UTNQuest",
+    tagline: { es: "Repasá el parcial jugando", en: "Study for exams by playing" },
+    description: {
+      es: "App con juegos para que estudiantes de la UTN FRM repasen sus materias: XP, niveles, rachas y logros. Incluye un Profe IA que toma examen oral citando los apuntes de la cátedra. Un solo código para web, Android e iOS.",
+      en: "Gamified app for UTN FRM students to review their courses: XP, levels, streaks and achievements. Includes an AI professor that runs oral exams citing the course notes. One codebase for web, Android and iOS.",
+    },
+    features: [
+      { es: "Rosco, contrarreloj, duelos y desafío diario", en: "Word wheel, time trial, duels and daily challenge" },
+      { es: "Profe IA con Claude y tool use sobre los apuntes", en: "AI professor with Claude tool use over the notes" },
+      { es: "XP y logros calculados en SQL: no se pueden inflar", en: "XP and achievements computed in SQL: cheat-proof" },
+      { es: "Modo invitado sin backend", en: "Guest mode with no backend" },
+    ],
+    stack: ["Flutter", "Riverpod", "Supabase", "PostgreSQL", "Edge Functions", "Claude API"],
+    stat: { value: "469", label: { es: "preguntas", en: "questions" } },
+  },
+];
+
+/** Forma de herramienta con la que se dibuja cada grupo en la caja. */
+export type ToolShape = "saw" | "multimeter" | "screwdriver" | "wrench" | "tape" | "drill" | "hammer";
+
+export type SkillGroup = { title: L; items: Tag[]; tool: ToolShape };
 
 export const skills: SkillGroup[] = [
   {
     title: { es: "Lenguajes", en: "Languages" },
     items: ["Java", "Python", "Dart", "TypeScript", "JavaScript", "C# (.NET 8)"],
-    areas: ["backend", "web", "mobile"],
+    tool: "saw",
   },
   {
     title: { es: "Datos, IA y automatización", en: "Data, AI & automation" },
     items: ["Vision LLMs", "MCP", "Ollama", "Qwen", "Gemma", { es: "Automatización fiscal", en: "Fiscal automation" }],
-    areas: ["ai", "automation"],
+    tool: "multimeter",
   },
   {
     title: { es: "Backend y bases de datos", en: "Backend & databases" },
-    items: ["PostgreSQL", "Firebase", "Firestore", "REST APIs", "Postman", "SQL / NoSQL"],
-    areas: ["backend"],
+    items: ["PostgreSQL", "Supabase", "Firebase", "REST APIs", "Postman", "SQL / NoSQL"],
+    tool: "screwdriver",
   },
   {
     title: { es: "Frontend y mobile", en: "Frontend & mobile" },
     items: ["React", "Node.js", "Flutter", "Firebase Auth"],
-    areas: ["web", "mobile"],
+    tool: "wrench",
   },
   {
     title: { es: "IoT e industria", en: "IoT & industrial" },
     items: ["ESP32", "PLC", { es: "Sensores", en: "Sensors" }, { es: "Telemetría", en: "Telemetry" }, { es: "Monitoreo en vivo", en: "Live monitoring" }],
-    areas: ["iot"],
+    tool: "tape",
   },
   {
     title: { es: "DevOps y herramientas", en: "DevOps & tools" },
     items: ["Linux", "Git", "Docker", "Kubernetes", "GitHub Actions", "AWS", "Azure"],
-    areas: ["devops"],
+    tool: "drill",
   },
   {
     title: { es: "Operaciones", en: "Operations" },
     items: ["ERP / CRM", "ARCA / AFIP", { es: "Logística", en: "Logistics" }, { es: "BI y churn", en: "BI & churn" }],
-    areas: ["automation"],
+    tool: "hammer",
   },
 ];
 
-export const credentials = [
+/** Certificaciones, grabadas como placas remachadas de identificación de máquina. */
+export const credentials: { title: L; detail: L; serial: L; status: L }[] = [
   {
-    title: { es: "Ingeniería en Sistemas · UTN", en: "Systems Engineering · UTN" },
-    detail: { es: "4.º año en curso · Mendoza", en: "4th year, ongoing · Mendoza" },
+    title: { es: "Ingeniería en Sistemas", en: "Systems Engineering" },
+    detail: { es: "UTN · Mendoza", en: "UTN · Mendoza" },
+    serial: { es: "Año 4/5", en: "Year 4/5" },
+    status: { es: "En curso", en: "In progress" },
   },
   {
-    title: { es: "Inglés C1 · TOEFL iBT", en: "English C1 · TOEFL iBT" },
-    detail: { es: "Instituto Amicana · 2015–2019", en: "Instituto Amicana · 2015–2019" },
+    title: { es: "Inglés C1", en: "English C1" },
+    detail: { es: "TOEFL iBT · Instituto Amicana", en: "TOEFL iBT · Instituto Amicana" },
+    serial: { es: "2015–2019", en: "2015–2019" },
+    status: { es: "Certificado", en: "Certified" },
   },
   {
-    title: { es: "Español nativo", en: "Native Spanish" },
-    detail: { es: "Trabajo cómodo en ambos idiomas", en: "Fully comfortable working in both" },
+    title: { es: "Español", en: "Spanish" },
+    detail: { es: "Lengua materna", en: "Mother tongue" },
+    serial: { es: "Nativo", en: "Native" },
+    status: { es: "Operativo", en: "Operational" },
   },
 ];
-
-export const experience = {
-  role: { es: "Analista de Operaciones y Automatización de TI", en: "Operations & IT Automation Analyst" },
-  company: { es: "Planta de distribución de agua", en: "Water distribution plant" },
-  period: { es: "11/2024 – Presente", en: "11/2024 – Present" },
-  extra: [
-    {
-      areas: ["automation"] as Area[],
-      line: {
-        es: "Coordinación de 2 rutas de distribución diarias (60–100 clientes/día) y del servicio técnico, cumpliendo los SLA.",
-        en: "Coordinated 2 daily distribution routes (60–100 clients/day) and technical service schedules, meeting SLAs.",
-      },
-    },
-    {
-      areas: ["ai", "automation"] as Area[],
-      line: {
-        es: "Análisis de abonos y demanda (~3.000 bidones/semana) para detectar señales de churn y proyectar ingresos recurrentes.",
-        en: "Analyzed subscriptions and demand (~3,000 units/week) to detect churn signals and forecast recurring revenue.",
-      },
-    },
-  ],
-};
-
-export const areaLabels: Record<Area, L> = {
-  backend: { es: "Backend", en: "Backend" },
-  web: { es: "Web / Full stack", en: "Web / Full stack" },
-  mobile: { es: "Mobile", en: "Mobile" },
-  ai: { es: "Datos e IA", en: "Data & AI" },
-  iot: { es: "IoT / Industrial", en: "IoT / Industrial" },
-  devops: { es: "DevOps / Infra", en: "DevOps / Infra" },
-  automation: { es: "Automatización de procesos", en: "Process automation" },
-};
-
-/** Frase de apertura del CV a medida según el área principal elegida. */
-export const areaPitch: Record<Area, L> = {
-  backend: {
-    es: "sistemas backend confiables que mueven dinero y datos reales",
-    en: "reliable backend systems that move real money and data",
-  },
-  web: {
-    es: "productos full stack de punta a punta, del modelo de datos a la interfaz",
-    en: "end-to-end full stack products, from data model to UI",
-  },
-  mobile: {
-    es: "apps multiplataforma en Flutter que la gente usa todos los días",
-    en: "cross-platform Flutter apps people use every day",
-  },
-  ai: {
-    es: "IA aplicada a problemas concretos: Vision LLMs, modelos locales y MCP",
-    en: "AI applied to concrete problems: Vision LLMs, local models and MCP",
-  },
-  iot: {
-    es: "IoT industrial: sensores, ESP32 y PLCs conectados al software",
-    en: "industrial IoT: sensors, ESP32s and PLCs wired into software",
-  },
-  devops: {
-    es: "infraestructura sólida sobre Linux, contenedores y CI/CD",
-    en: "solid infrastructure on Linux, containers and CI/CD",
-  },
-  automation: {
-    es: "automatizar procesos de negocio hasta eliminar el trabajo manual",
-    en: "automating business processes until the manual work is gone",
-  },
-};

@@ -1,12 +1,11 @@
-import type { L } from "./data";
-
 // Textos de interfaz (botones, etiquetas, títulos de sección).
 export const ui = {
   nav: {
     plant: { es: "Planta", en: "Plant" },
+    lab: { es: "I+D", en: "R&D" },
     tools: { es: "Herramientas", en: "Tools" },
     game: { es: "Simulador", en: "Simulator" },
-    order: { es: "Orden", en: "Order" },
+    contact: { es: "Contacto", en: "Contact" },
   },
   downloadCv: { es: "CV", en: "CV" },
   downloadCvLong: { es: "Descargar CV", en: "Download CV" },
@@ -55,8 +54,19 @@ export const ui = {
     afterLabel: { es: "Después", en: "After" },
   },
 
+  lab: {
+    label: { es: "Taller de I+D", en: "R&D workshop" },
+    title: { es: "Proyectos propios", en: "Side projects" },
+    intro: {
+      es: "Lo que construyo fuera del trabajo, para aprender tecnologías nuevas y resolver problemas que me interesan.",
+      en: "What I build outside work, to learn new technologies and solve problems I care about.",
+    },
+    status: { es: "En desarrollo", en: "In development" },
+    prototype: { es: "Plano de prototipo", en: "Prototype drawing" },
+  },
+
   tools: {
-    label: { es: "Pañol de herramientas", en: "Tool crib" },
+    label: { es: "Caja de herramientas", en: "Toolbox" },
     title: { es: "Con qué trabajo", en: "What I work with" },
     certs: { es: "Certificaciones del operario", en: "Operator certifications" },
   },
@@ -85,54 +95,14 @@ export const ui = {
     next: { es: "Siguiente nivel", en: "Next level" },
     done: { es: "Planta 100% automatizada", en: "Plant 100% automated" },
     doneText: {
-      es: "Ahora imaginá esto con procesos reales de tu empresa. Pasá a la última estación y armá tu pedido.",
-      en: "Now picture this with your company's real processes. Head to the last station and place your order.",
+      es: "Ahora imaginá esto con los procesos reales de tu empresa.",
+      en: "Now picture this with your company's real processes.",
     },
-    toOrder: { es: "Ir a la orden de producción", en: "Go to the work order" },
+    toContact: { es: "Hablemos", en: "Let's talk" },
     replay: { es: "Jugar de nuevo", en: "Play again" },
     wrong: { es: "¡Pieza mal procesada!", en: "Badly processed part!" },
     source: { es: "Entrada", en: "Input" },
     sink: { es: "Salida", en: "Output" },
-  },
-
-  order: {
-    label: { es: "Última estación", en: "Final station" },
-    title: { es: "Orden de producción a medida", en: "Custom work order" },
-    intro: {
-      es: "Completá la orden con lo que buscás y la planta fabrica un CV hecho para tu búsqueda, listo para descargar en PDF.",
-      en: "Fill in the order with what you're looking for and the plant builds a CV tailored to your role, ready to download as PDF.",
-    },
-    number: { es: "Orden N.º", en: "Order No." },
-    client: { es: "Cliente / empresa", en: "Client / company" },
-    clientPh: { es: "Ej.: Acme S.A. (opcional)", en: "e.g. Acme Inc. (optional)" },
-    position: { es: "Puesto", en: "Position" },
-    positionPh: { es: "Ej.: Backend Developer (opcional)", en: "e.g. Backend Developer (optional)" },
-    specs: { es: "Especificaciones requeridas", en: "Required specs" },
-    specsHint: { es: "Elegí al menos una", en: "Pick at least one" },
-    produce: { es: "Fabricar CV", en: "Build CV" },
-    producing: { es: "En producción…", en: "In production…" },
-    steps: [
-      { es: "Seleccionando materia prima", en: "Selecting raw material" },
-      { es: "Mecanizando experiencia", en: "Machining experience" },
-      { es: "Ensamblando habilidades", en: "Assembling skills" },
-      { es: "Control de calidad", en: "Quality control" },
-    ] as L[],
-    download: { es: "Descargar PDF", en: "Download PDF" },
-    newOrder: { es: "Nueva orden", en: "New order" },
-    madeFor: { es: "Fabricado para", en: "Built for" },
-    qc: { es: "QC aprobado", en: "QC passed" },
-    printHint: {
-      es: "En el diálogo de impresión elegí «Guardar como PDF».",
-      en: "In the print dialog choose “Save as PDF”.",
-    },
-  },
-
-  cv: {
-    summary: { es: "Perfil", en: "Profile" },
-    experience: { es: "Experiencia", en: "Experience" },
-    skills: { es: "Habilidades técnicas", en: "Technical skills" },
-    education: { es: "Educación e idiomas", en: "Education & languages" },
-    focus: { es: "Foco en", en: "Focus on" },
   },
 
   estop: {

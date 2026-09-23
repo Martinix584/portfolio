@@ -123,7 +123,7 @@ function Badge() {
       <div className="plate -rotate-2 overflow-hidden rounded-xl transition-transform duration-500 hover:rotate-0">
         <div className="flex items-center justify-between bg-safety px-4 py-2 text-black">
           <span className="font-display text-sm font-extrabold uppercase tracking-wider">{t(ui.hero.badge)}</span>
-          <span className="font-mono text-[10px] font-semibold">MP·WORKS</span>
+          <span className="font-mono text-[10px] font-semibold">MP·FACTORY</span>
         </div>
         <div className="p-4">
           <div className="flex gap-4">
@@ -138,7 +138,7 @@ function Badge() {
           <dl className="mt-4 grid grid-cols-2 gap-x-3 gap-y-2 border-t border-dashed border-line pt-3 font-mono text-[10px] uppercase">
             <div>
               <dt className="text-muted">{t(ui.hero.id)}</dt>
-              <dd className="text-ink">MP-2411</dd>
+              <dd className="text-ink">0912</dd>
             </div>
             <div>
               <dt className="text-muted">{t(ui.hero.clearance)}</dt>

@@ -11,9 +11,10 @@ export function Header() {
 
   const links = [
     { href: "#planta", label: ui.nav.plant },
+    { href: "#taller", label: ui.nav.lab },
     { href: "#herramientas", label: ui.nav.tools },
     { href: "#simulador", label: ui.nav.game },
-    { href: "#orden", label: ui.nav.order },
+    { href: "#contacto", label: ui.nav.contact },
   ];
 
   return (
@@ -22,8 +23,8 @@ export function Header() {
         <a href="#top" className="flex items-center gap-2 font-display text-lg font-extrabold uppercase tracking-wide">
           <Settings className="gear-spin h-5 w-5 text-safety" aria-hidden />
           <span>
-            {profile.shortName}
-            <span className="text-safety"> · WORKS</span>
+            {profile.brand.main}
+            <span className="text-safety">{profile.brand.accent}</span>
           </span>
         </a>
 

@@ -180,6 +180,54 @@ function Depot() {
   );
 }
 
+function Service() {
+  return (
+    <>
+      {/* Banco de trabajo */}
+      <rect x="0" y="100" width="200" height="6" rx="1" className="fill-[#3a3e44]" />
+      {/* Dispenser con su QR */}
+      <g transform="translate(26 8)">
+        <path d="M12 8 Q12 2 18 2 H30 Q36 2 36 8 V34 H12 Z" className="fill-steel/40" stroke="var(--steel)" strokeWidth="1.5" />
+        <rect x="20" y="-2" width="8" height="5" rx="1" className="fill-steel" />
+        <rect x="4" y="34" width="40" height="58" rx="3" fill="#d8dde2" stroke="#8c9299" />
+        <rect x="12" y="44" width="5" height="8" rx="1" className="fill-alarm" />
+        <rect x="31" y="44" width="5" height="8" rx="1" className="fill-steel" />
+        <rect x="9" y="56" width="30" height="4" rx="1" fill="#8c9299" />
+        <g transform="translate(16 66)">
+          <rect width="16" height="16" fill="#fff" stroke="#222" strokeWidth="0.8" />
+          {[
+            [1, 1], [9, 1], [1, 9], [6, 6], [11, 11], [6, 12], [12, 6],
+          ].map(([x, y], i) => (
+            <rect key={i} x={x} y={y} width={i < 3 ? 6 : 3} height={i < 3 ? 6 : 3} fill="#111" />
+          ))}
+        </g>
+      </g>
+      {/* Celular escaneando */}
+      <path d="M58 82 L96 64" stroke="var(--green)" strokeWidth="1.2" strokeDasharray="3 3" className="sc-flow" />
+      <g transform="translate(96 34)">
+        <rect x="0" y="0" width="32" height="60" rx="5" className="fill-[#0b0c0d]" stroke="#5a5f66" strokeWidth="1.5" />
+        <rect x="6" y="14" width="20" height="20" rx="1" fill="none" stroke="var(--green)" strokeWidth="1.2" strokeDasharray="5 10" />
+        <rect x="6" y="14" width="20" height="1.5" className="fill-led sc sc-scan-sm" />
+        <rect x="6" y="40" width="20" height="3" rx="1" className="fill-[#2a2e33]" />
+        <path d="M8 50 q4 -6 8 0 t8 0" fill="none" stroke="var(--yellow)" strokeWidth="1.2" />
+      </g>
+      {/* Impresora térmica Bluetooth */}
+      <g transform="translate(142 62)">
+        <g className="sc sc-ticket">
+          <rect x="10" y="-4" width="26" height="30" fill="#f1efe9" />
+          {[2, 7, 12, 17].map((y) => (
+            <rect key={y} x="14" y={y} width={y === 17 ? 10 : 18} height="2" fill="#999" />
+          ))}
+        </g>
+        <rect x="0" y="4" width="46" height="34" rx="5" className="fill-[#1d2023]" stroke="#5a5f66" />
+        <rect x="8" y="2" width="30" height="5" rx="1" className="fill-[#0b0c0d]" />
+        <circle cx="38" cy="30" r="2.5" className="fill-steel sc-led" />
+        <text x="6" y="32" className="fill-steel font-mono text-[7px] font-semibold">BT</text>
+      </g>
+    </>
+  );
+}
+
 function DataCenter() {
   return (
     <>
@@ -247,6 +295,7 @@ export function Scene({ id, active = true }: { id: SceneId; active?: boolean }) 
       {id === "fiscal" && <Fiscal />}
       {id === "lab" && <Lab />}
       {id === "production" && <Production count={count} />}
+      {id === "service" && <Service />}
       {id === "depot" && <Depot />}
       {id === "datacenter" && <DataCenter />}
     </svg>

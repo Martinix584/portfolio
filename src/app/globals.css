@@ -177,29 +177,6 @@ html.halted .led-blink {
   }
 }
 
-/* Impresión: solo sale la copia del CV a medida (portal #cv-print bajo <body>) */
-#cv-print {
-  display: none;
-}
-@media print {
-  @page {
-    size: A4;
-    margin: 12mm;
-  }
-  html,
-  body {
-    background: #fff !important;
-    color: #111 !important;
-    color-scheme: light;
-  }
-  body > *:not(#cv-print) {
-    display: none !important;
-  }
-  #cv-print {
-    display: block !important;
-  }
-}
-
 /* ---------- Escenas animadas del plano de planta (prefijo sc-) ---------- */
 .sc {
   transform-box: fill-box;
@@ -224,6 +201,20 @@ html.halted .led-blink {
   50% { transform: translateY(66px); }
 }
 .sc-scan { animation: sc-scan 2.6s ease-in-out infinite; }
+
+@keyframes sc-scan-sm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(18px); }
+}
+.sc-scan-sm { animation: sc-scan-sm 1.6s ease-in-out infinite; }
+
+@keyframes sc-ticket {
+  0% { transform: translateY(14px); opacity: 0; }
+  12% { opacity: 1; }
+  60% { transform: translateY(-20px); opacity: 1; }
+  85%, 100% { transform: translateY(-20px); opacity: 0; }
+}
+.sc-ticket { animation: sc-ticket 2.8s ease-in-out infinite; }
 
 @keyframes sc-type {
   0%, 10% { transform: scaleX(0); }

@@ -14,14 +14,15 @@ type Rect = { x: number; y: number; w: number; h: number };
 
 // Posición de cada sala en el plano, en % del contenedor. "m" = celular, "d" = escritorio.
 const LAYOUT: Record<string, { m: Rect; d: Rect }> = {
-  conciliacion: { m: { x: 2, y: 2, w: 47, h: 19 }, d: { x: 1, y: 2, w: 31, h: 40 } },
-  arca: { m: { x: 51, y: 2, w: 47, h: 19 }, d: { x: 34, y: 2, w: 31, h: 40 } },
-  vision: { m: { x: 2, y: 23, w: 96, h: 18 }, d: { x: 67, y: 2, w: 32, h: 40 } },
-  iot: { m: { x: 2, y: 43, w: 96, h: 18 }, d: { x: 1, y: 48, w: 40, h: 36 } },
-  erp: { m: { x: 2, y: 63, w: 47, h: 20 }, d: { x: 43, y: 48, w: 27, h: 36 } },
-  ada: { m: { x: 51, y: 63, w: 47, h: 20 }, d: { x: 72, y: 48, w: 27, h: 36 } },
+  conciliacion: { m: { x: 2, y: 2, w: 47, h: 15 }, d: { x: 1, y: 2, w: 31, h: 29 } },
+  arca: { m: { x: 51, y: 2, w: 47, h: 15 }, d: { x: 34, y: 2, w: 31, h: 29 } },
+  vision: { m: { x: 2, y: 19, w: 96, h: 14 }, d: { x: 67, y: 2, w: 32, h: 29 } },
+  iot: { m: { x: 2, y: 35, w: 96, h: 14 }, d: { x: 51, y: 35, w: 48, h: 25 } },
+  erp: { m: { x: 2, y: 51, w: 47, h: 16 }, d: { x: 1, y: 35, w: 48, h: 25 } },
+  servicio: { m: { x: 2, y: 69, w: 96, h: 14 }, d: { x: 1, y: 63, w: 48, h: 25 } },
+  ada: { m: { x: 51, y: 51, w: 47, h: 16 }, d: { x: 51, y: 63, w: 48, h: 25 } },
 };
-const ROAD = { m: { y: 86, h: 11 }, d: { y: 88, h: 10 } };
+const ROAD = { m: { y: 85, h: 10 }, d: { y: 91, h: 7 } };
 
 const pos = (r: Rect, p: "m" | "d") =>
   ({
@@ -85,7 +86,7 @@ export function Plant() {
         </div>
 
         {/* Plano */}
-        <div className="plate relative mt-4 aspect-[390/722] w-full overflow-hidden rounded-lg md:aspect-[1200/760]">
+        <div className="plate relative mt-4 aspect-[390/860] w-full overflow-hidden rounded-lg md:aspect-[1200/1000]">
           <div className="floor-grid absolute inset-0 bg-[#141618]" />
 
           {/* Cañerías de datos entre sectores (solo escritorio) */}
@@ -95,9 +96,10 @@ export function Plant() {
             preserveAspectRatio="none"
             aria-hidden
           >
-            <Pipe d="M83 42 V44 H49.5 V42" color="var(--steel)" />
-            <Pipe d="M16 42 V45 H86 V48" color="var(--yellow)" />
-            <Pipe d="M21 48 V46 H80 V48 M56 48 V46" color="var(--green)" />
+            <Pipe d="M83 31 V32.3 H49.5 V31" color="var(--steel)" />
+            <Pipe d="M16 31 V33.6 H99.6 V61.2 H88 V63" color="var(--yellow)" />
+            <Pipe d="M25 60 V61.5 H62 V63 M75 60 V61.5 H62" color="var(--green)" />
+            <Pipe d="M49 75.5 H51" color="var(--orange)" />
           </svg>
 
           {stations.map((s, i) => (

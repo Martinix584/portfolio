@@ -24,7 +24,7 @@ export function FactoryGame() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionTitle label={t(ui.game.label)} title={t(ui.game.title)} intro={t(ui.game.intro)} />
           <a
-            href="#orden"
+            href="#contacto"
             className="flex items-center gap-2 rounded border border-line px-3 py-2 font-mono text-xs uppercase text-muted transition-colors hover:border-safety hover:text-safety"
           >
             <SkipForward className="h-4 w-4" /> {t(ui.game.skip)}
@@ -524,10 +524,10 @@ function Finished({ onReplay }: { onReplay: () => void }) {
       <p className="mx-auto mt-3 max-w-md text-muted">{t(ui.game.doneText)}</p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <a
-          href="#orden"
+          href="#contacto"
           className="flex items-center gap-2 rounded bg-safety px-4 py-2.5 font-mono text-xs font-semibold uppercase text-black"
         >
-          {t(ui.game.toOrder)} <ArrowRight className="h-4 w-4" />
+          {t(ui.game.toContact)} <ArrowRight className="h-4 w-4" />
         </a>
         <button
           onClick={onReplay}
