@@ -1,26 +1,201 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #111213;
+  --panel: #1a1c1e;
+  --panel-2: #222529;
+  --line: #34383d;
+  --text: #ebe8e2;
+  --muted: #9b9fa3;
+  --yellow: #f5b700;
+  --orange: #ff6b1a;
+  --green: #3ddc84;
+  --red: #e2352f;
+  --steel: #6f9cc4;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-safety: var(--yellow);
+  --color-rust: var(--orange);
+  --color-led: var(--green);
+  --color-alarm: var(--red);
+  --color-steel: var(--steel);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+  --font-display: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-plex-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--yellow);
+  color: #111;
+}
+
+/* Piso de planta: grilla técnica sutil */
+.floor-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Franjas de seguridad amarillo/negro */
+.hazard {
+  background: repeating-linear-gradient(-45deg, var(--yellow) 0 14px, #141414 14px 28px);
+}
+.hazard-thin {
+  background: repeating-linear-gradient(-45deg, var(--yellow) 0 6px, #141414 6px 12px);
+}
+
+/* Chapa metálica con remaches */
+.plate {
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--line);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.05),
+    0 10px 30px -12px rgb(0 0 0 / 0.6);
+}
+.rivets {
+  position: relative;
+}
+.rivets::before,
+.rivets::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 35%, #6a6f75, #2a2d31);
+}
+.rivets::before {
+  left: 10px;
+}
+.rivets::after {
+  right: 10px;
+}
+
+/* Persiana metálica del portón */
+.shutter {
+  background: repeating-linear-gradient(
+    180deg,
+    #3a3e43 0 22px,
+    #2b2e32 22px 24px,
+    #45494f 24px 26px
+  );
+}
+
+/* Cinta transportadora animada */
+@keyframes belt-move {
+  to {
+    background-position: 40px 0;
+  }
+}
+.belt {
+  background:
+    repeating-linear-gradient(90deg, #2a2d31 0 18px, #1d1f22 18px 20px),
+    #1d1f22;
+  animation: belt-move 1.2s linear infinite;
+}
+@keyframes belt-move-y {
+  to {
+    background-position: 0 40px;
+  }
+}
+.belt-y {
+  background: repeating-linear-gradient(180deg, #2a2d31 0 18px, #1d1f22 18px 20px);
+  animation: belt-move-y 1.2s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+.led-blink {
+  animation: blink 1.4s steps(2, jump-none) infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.gear-spin {
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes beacon {
+  0%,
+  100% {
+    background: rgb(226 53 47 / 0.22);
+  }
+  50% {
+    background: rgb(226 53 47 / 0.08);
+  }
+}
+.beacon {
+  animation: beacon 0.9s ease-in-out infinite;
+}
+
+/* Parada de emergencia: congela toda la planta */
+html.halted .belt,
+html.halted .belt-y,
+html.halted .gear-spin,
+html.halted .led-blink {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .belt,
+  .belt-y,
+  .gear-spin,
+  .led-blink,
+  .beacon {
+    animation: none;
+  }
+}
+
+/* Impresión: solo sale la copia del CV a medida (portal #cv-print bajo <body>) */
+#cv-print {
+  display: none;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    color-scheme: light;
+  }
+  body > *:not(#cv-print) {
+    display: none !important;
+  }
+  #cv-print {
+    display: block !important;
+  }
 }

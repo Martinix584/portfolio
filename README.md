@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MP·WORKS — Portfolio de Martín Porollan
 
-## Getting Started
+Portfolio con temática de fábrica, hecho con Next.js 16, Tailwind 4 y Motion.
 
-First, run the development server:
+## Recorrido
+
+1. **Portón**: una persiana metálica que se abre con el scroll y deja ver la credencial de operario.
+2. **Línea de producción**: una pieza baja por la cinta y cambia de forma en cada estación (cada una es un proyecto: Problema → Solución → Stack → Impacto).
+3. **Pañol de herramientas**: habilidades, estudios e idiomas.
+4. **Simulador**: minijuego tipo Factorio con 3 niveles, que se puede saltar.
+5. **Orden de producción**: arma un CV a medida y lo descarga como PDF desde el diálogo de impresión.
+6. **Siempre visibles**: botón de parada de emergencia (contacto), sensor de visitas, selector ES/EN y descarga del CV.
+
+## Editar contenido
+
+- Textos, proyectos, métricas y habilidades: `src/content/data.ts`
+- Textos de interfaz: `src/content/ui.ts`
+- Niveles del juego: `src/components/game/levels.ts`
+- CVs descargables: `public/cv/` (los originales están en `cv-source/`)
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy en Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Subí el repo a GitHub e importalo en [vercel.com/new](https://vercel.com/new). No hace falta configurar nada más.
+2. **Contador de visitas (opcional)**: en el proyecto de Vercel, entrá a *Storage → Marketplace → Upstash Redis → Connect*. Eso crea las variables `KV_REST_API_URL` y `KV_REST_API_TOKEN`. Hacé un redeploy y el sensor empieza a mostrar el número. Sin esas variables, el sensor muestra "en línea" y no cuenta.
