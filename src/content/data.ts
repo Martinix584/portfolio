@@ -36,9 +36,14 @@ export const profile = {
   },
 };
 
+export type SceneId = "treasury" | "fiscal" | "lab" | "depot" | "production" | "datacenter";
+
 export type Station = {
   id: string;
   code: string;
+  /** Sector de la planta donde vive este proyecto. */
+  sector: L;
+  scene: SceneId;
   title: L;
   kicker: L;
   problem: L;
@@ -69,7 +74,9 @@ export const rawMaterial = {
 export const stations: Station[] = [
   {
     id: "conciliacion",
-    code: "EST-01",
+    code: "S-01",
+    sector: { es: "Tesorería", en: "Treasury" },
+    scene: "treasury",
     kicker: { es: "Ingeniería financiera", en: "Financial engineering" },
     title: { es: "Motor de conciliación de pagos", en: "Payment reconciliation engine" },
     problem: {
@@ -97,7 +104,9 @@ export const stations: Station[] = [
   },
   {
     id: "arca",
-    code: "EST-02",
+    code: "S-02",
+    sector: { es: "Oficina fiscal", en: "Tax office" },
+    scene: "fiscal",
     kicker: { es: "Automatización fiscal", en: "Fiscal automation" },
     title: { es: "Bot de facturación ARCA", en: "ARCA invoicing bot" },
     problem: {
@@ -121,7 +130,9 @@ export const stations: Station[] = [
   },
   {
     id: "vision",
-    code: "EST-03",
+    code: "S-03",
+    sector: { es: "Laboratorio de IA", en: "AI lab" },
+    scene: "lab",
     kicker: { es: "IA aplicada", en: "Applied AI" },
     title: { es: "Digitalización de facturas con Vision LLMs", en: "Invoice digitization with Vision LLMs" },
     problem: {
@@ -149,7 +160,9 @@ export const stations: Station[] = [
   },
   {
     id: "erp",
-    code: "EST-04",
+    code: "S-04",
+    sector: { es: "Depósito y logística", en: "Warehouse & logistics" },
+    scene: "depot",
     kicker: { es: "Full stack", en: "Full stack" },
     title: { es: "ERP en Flutter + Firebase", en: "Flutter + Firebase ERP" },
     problem: {
@@ -173,7 +186,9 @@ export const stations: Station[] = [
   },
   {
     id: "iot",
-    code: "EST-05",
+    code: "S-05",
+    sector: { es: "Producción", en: "Production floor" },
+    scene: "production",
     kicker: { es: "IoT industrial", en: "Industrial IoT" },
     title: { es: "Telemetría de producción", en: "Production telemetry" },
     problem: {
@@ -197,7 +212,9 @@ export const stations: Station[] = [
   },
   {
     id: "ada",
-    code: "EST-06",
+    code: "S-06",
+    sector: { es: "Centro de datos", en: "Data center" },
+    scene: "datacenter",
     kicker: { es: "Arquitectura de sistemas", en: "Systems architecture" },
     title: { es: "Suite ADA", en: "ADA application suite" },
     problem: {

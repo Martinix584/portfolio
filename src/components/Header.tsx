@@ -10,7 +10,7 @@ export function Header() {
   const { lang, setLang, t } = useLang();
 
   const links = [
-    { href: "#linea", label: ui.nav.line },
+    { href: "#planta", label: ui.nav.plant },
     { href: "#herramientas", label: ui.nav.tools },
     { href: "#simulador", label: ui.nav.game },
     { href: "#orden", label: ui.nav.order },

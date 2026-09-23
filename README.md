@@ -5,7 +5,7 @@ Portfolio con temática de fábrica, hecho con Next.js 16, Tailwind 4 y Motion.
 ## Recorrido
 
 1. **Portón**: una persiana metálica que se abre con el scroll y deja ver la credencial de operario.
-2. **Línea de producción**: una pieza baja por la cinta y cambia de forma en cada estación (cada una es un proyecto: Problema → Solución → Stack → Impacto).
+2. **Plano de planta**: un mapa interactivo con 6 sectores animados (tesorería, oficina fiscal, laboratorio de IA, producción, depósito y centro de datos). Cada sector es un proyecto y al tocarlo se abre su ficha: Problema → Solución → Stack → Impacto.
 3. **Pañol de herramientas**: habilidades, estudios e idiomas.
 4. **Simulador**: minijuego tipo Factorio con 3 niveles, que se puede saltar.
 5. **Orden de producción**: arma un CV a medida y lo descarga como PDF desde el diálogo de impresión.
@@ -14,6 +14,8 @@ Portfolio con temática de fábrica, hecho con Next.js 16, Tailwind 4 y Motion.
 ## Editar contenido
 
 - Textos, proyectos, métricas y habilidades: `src/content/data.ts`
+- Posición de cada sector en el plano: `LAYOUT` en `src/components/plant/Plant.tsx`
+- Animaciones de cada sector: `src/components/plant/scenes.tsx`
 - Textos de interfaz: `src/content/ui.ts`
 - Niveles del juego: `src/components/game/levels.ts`
 - CVs descargables: `public/cv/` (los originales están en `cv-source/`)

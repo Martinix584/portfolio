@@ -5,7 +5,7 @@ import { BadgeCheck } from "lucide-react";
 import { credentials, skills } from "@/content/data";
 import { ui } from "@/content/ui";
 import { tag, useLang } from "@/lib/i18n";
-import { SectionTitle } from "./ProductionLine";
+import { SectionTitle } from "./SectionTitle";
 
 /** Pañol de herramientas: cada grupo de skills es un cajón etiquetado sobre un tablero perforado. */
 export function Toolroom() {

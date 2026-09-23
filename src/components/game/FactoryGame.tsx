@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, ChevronRight, Eraser, HardHat, RotateCcw, SkipForward, Trophy, X } from "lucide-react";
 import { ui } from "@/content/ui";
 import { useLang } from "@/lib/i18n";
-import { SectionTitle } from "../ProductionLine";
+import { SectionTitle } from "../SectionTitle";
 import { ITEMS, LEVELS, MACHINES, type Cell, type Dir, type Level, type MachineId, type Tile } from "./levels";
 import { emptySim, isWall, key, step, type SimState } from "./sim";
 

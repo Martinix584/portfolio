@@ -7,7 +7,7 @@ import { Check, Factory, Printer, RotateCcw } from "lucide-react";
 import { areaLabels, type Area } from "@/content/data";
 import { ui } from "@/content/ui";
 import { useLang } from "@/lib/i18n";
-import { SectionTitle } from "../ProductionLine";
+import { SectionTitle } from "../SectionTitle";
 import { buildCv, type BuiltCv } from "./buildCv";
 import { CvSheet } from "./CvSheet";
 

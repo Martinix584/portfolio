@@ -3,7 +3,7 @@ import type { L } from "./data";
 // Textos de interfaz (botones, etiquetas, títulos de sección).
 export const ui = {
   nav: {
-    line: { es: "Línea", en: "Line" },
+    plant: { es: "Planta", en: "Plant" },
     tools: { es: "Herramientas", en: "Tools" },
     game: { es: "Simulador", en: "Simulator" },
     order: { es: "Orden", en: "Order" },
@@ -28,22 +28,31 @@ export const ui = {
     gate: { es: "Portón 1 · Acceso de visitas", en: "Gate 1 · Visitor access" },
   },
 
-  line: {
-    label: { es: "Línea de producción", en: "Production line" },
-    title: { es: "Del papel al sistema", en: "From paper to system" },
+  plant: {
+    label: { es: "Plano de planta", en: "Plant floor plan" },
+    title: { es: "Recorré la planta", en: "Tour the plant" },
     intro: {
-      es: "Seguí la pieza por la línea. Cada estación es un proyecto real en producción: qué problema había, cómo lo resolví y qué cambió.",
-      en: "Follow the part down the line. Each station is a real project in production: the problem, how I solved it and what changed.",
+      es: "Cada sector es un sistema real que diseñé y hoy está en producción. Tocá un sector para inspeccionarlo: qué problema había, cómo lo resolví y qué cambió.",
+      en: "Each sector is a real system I designed that's running in production today. Tap a sector to inspect it: the problem, how I solved it and what changed.",
     },
+    before: { es: "Estado inicial · nov 2024", en: "Starting point · Nov 2024" },
+    inspect: { es: "Inspeccionar", en: "Inspect" },
+    inspected: { es: "Inspeccionado", en: "Inspected" },
+    progress: { es: "Inspección", en: "Inspection" },
+    hint: { es: "Tocá un sector para inspeccionarlo", en: "Tap a sector to inspect it" },
+    certified: { es: "Planta certificada: viste todos los sectores.", en: "Plant certified: you've seen every sector." },
+    toGame: { es: "Ahora automatizala vos", en: "Now automate it yourself" },
+    gate: { es: "Portón", en: "Gate" },
+    dispatch: { es: "Despacho", en: "Dispatch" },
+    close: { es: "Cerrar", en: "Close" },
+    prev: { es: "Sector anterior", en: "Previous sector" },
+    next: { es: "Sector siguiente", en: "Next sector" },
     problem: { es: "Problema", en: "Problem" },
     solution: { es: "Solución", en: "Solution" },
     stack: { es: "Stack", en: "Stack" },
-    impact: { es: "Impacto", en: "Impact" },
-    before: { es: "Antes", en: "Before" },
-    after: { es: "Después", en: "After" },
     drag: { es: "Arrastrá para comparar", en: "Drag to compare" },
-    input: { es: "Entrada", en: "Input" },
-    output: { es: "Salida", en: "Output" },
+    beforeLabel: { es: "Antes", en: "Before" },
+    afterLabel: { es: "Después", en: "After" },
   },
 
   tools: {

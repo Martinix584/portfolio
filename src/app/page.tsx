@@ -4,7 +4,7 @@ import { FactoryGame } from "@/components/game/FactoryGame";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { WorkOrder } from "@/components/order/WorkOrder";
-import { ProductionLine } from "@/components/ProductionLine";
+import { Plant } from "@/components/plant/Plant";
 import { Toolroom } from "@/components/Toolroom";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <ProductionLine />
+        <Plant />
         <Toolroom />
         <FactoryGame />
         <WorkOrder />
