@@ -1,7 +1,7 @@
 # Martín Porollan
 
 <p align="left">
-  <strong>Systems Engineering Student · Full Stack Developer · Data, AI & Automation</strong><br>
+  <strong>Systems Engineering Student · Data, Analytics & Applied AI</strong><br>
   📍 Mendoza, Argentina &nbsp;|&nbsp; 🎓 UTN FRM (4th year) &nbsp;|&nbsp; 🌐 English C1 (TOEFL iBT)
 </p>
 
@@ -22,38 +22,39 @@
 
 ---
 
-I am a Systems Engineering student from Argentina passionate about finding operational bottlenecks and solving them with end-to-end software: from low-level IoT and backend architecture to applied AI pipelines, cross-platform apps, and automated workflows.
+Fourth-year Systems Engineering student at UTN with almost 2 years digitizing the operations of a water bottling and distribution company. I work with **SQL and PostgreSQL**: data modeling, reporting views, ETL migrations and data-quality validation. I've brought **applied AI** into real processes — invoice extraction with Vision LLMs (Gemini) and natural-language database operations over **MCP** — always with validations and a human in the loop. Next goal: AI-powered analytics on **Google Cloud** (Looker, BigQuery, Vertex AI).
 
 ---
 
-### Personal favorites (techs & frameworks)
+### Techs & frameworks
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=python,java,cs,dotnet,flutter,dart,ts,js,react,postgres,firebase,docker,linux,git" alt="My Skills" />
+    <img src="https://skillicons.dev/icons?i=postgres,supabase,python,fastapi,java,spring,ts,flutter,dart,kotlin,firebase,docker,linux,git,githubactions,vercel" alt="My Skills" />
   </a>
 </p>
 
 ---
 
-### Languages
+### Highlights
 
-```java
-languages.add("Spanish (Native)");
-languages.add("English (C1 Advanced - TOEFL iBT)");
-```
+- **100% digital operation** — factory delivery notes moved from paper to an app: **4,300+** recorded (~700/month) across **44** distributors.
+- **Zero-loss migration** — **5,220** values validated between Firebase and PostgreSQL with **0** mismatches.
+- **Applied AI in production** — automatic invoice reading with Gemini and natural-language DB operations via MCP.
+- **Quality & reliability** — bank reconciliation with human review of doubtful matches, payment deduplication and **184** automated tests.
 
 ---
 
-### Jobs & Experience
+### Experience
 
-- **Operations & IT Automation Analyst** — *Planta de distribución de agua* `(11/2024 – Present)`
-  - **Full Digital Transformation**: Transformed paper-based operations (600+ clients) into a 100% digital ecosystem.
-  - **Suite ADA**: Designed and built enterprise ecosystem in **.NET 8**, **PostgreSQL**, **React** and **Flutter** connecting customer self-service, field operations with QR traceability, factory telemetry, and AI reporting via Model Context Protocol (**MCP**).
-  - **Cross-Platform ERP**: Developed mobile and desktop ERP in **Flutter & Firebase** with real-time stock and 3,600+ digital delivery notes.
-  - **Tax & Fiscal Automation**: Automated e-invoicing via **Python & ARCA API** (150+ monthly invoices) and created an invoice extraction pipeline using **Vision-Language LLMs**.
-  - **Financial Automation**: Built automated payment reconciliation engine in **Java**, cutting manual reconciliation time by **>50%** across 600+ accounts.
-  - **Industrial IoT**: Deployed production telemetry network with **ESP32** microcontrollers and optical barrier sensors for 24/7 real-time output monitoring.
+- **Operations & IT Automation Analyst** — *Water bottling & distribution company, Mendoza* `(11/2024 – Present)`
+  - **Delivery-note ERP (Flutter)**: replaced paper delivery notes with offline entry, numbered receipt books, digital signature and Bluetooth thermal printing.
+  - **Firebase → PostgreSQL migration (ETL)**: moved to Supabase/PostgreSQL for referential integrity and SQL reporting; daily-stats views, transactional FIFO payment allocation, RLS and auditing.
+  - **Bank reconciliation (Java → Python)**: scoring engine matching 3 banks' statements and WhatsApp receipts (read with Gemini) against pending invoices by CUIT, amount, name and date; auto-posts only high-confidence matches and learns from each review. Rewritten in **FastAPI** with verifiable rules instead of an LLM classifier.
+  - **Purchase invoices with a Vision LLM (Python)**: Gemini 2.5 Flash via a Telegram bot extracts 14 fields per invoice, validates CUIT, amounts and duplicates, and generates ARCA's digital VAT ledger import files. Used by two companies.
+  - **E-invoicing (TypeScript)**: ARCA web services (WSAA, WSFEv1) in Supabase Edge Functions with certificate signing, token caching, sequential numbering and Vault-stored certificates.
+  - **MCP server (Python, FastMCP)**: operators log collections and delivery notes from an AI chat. 23 tools, no free-form SQL — each calls a validating, audited DB function with the user's own OAuth token (RLS) and idempotent retries.
+  - **Field service app (Flutter)**: mobile app to manage service visits, with Bluetooth integration.
 
 ---
 
@@ -61,19 +62,19 @@ languages.add("English (C1 Advanced - TOEFL iBT)");
 
 | Project | Description | Stack |
 | :--- | :--- | :--- |
-| **[Suite ADA](https://github.com/Martinix584)** | Complete enterprise platform: self-service portal, field-tech QR app, industrial PLCs, and natural-language AI queries via MCP. | `.NET 8`, `PostgreSQL`, `React`, `Flutter`, `MCP` |
-| **ERP Logístico & Stock** | Cross-platform ERP for inventory control, dispatching and 3,600+ digital delivery notes (100% paperless). | `Flutter`, `Dart`, `Firebase`, `Firestore` |
-| **Vision LLM Invoicing** | Automated pipeline reading purchase vouchers from photos/PDFs and generating structured tax filing files. | `Python`, `Vision LLMs`, `JSON`, `ARCA API` |
-| **Payment Reconciliation Engine** | Automated bank statement parser and payment imputation matching by tax ID (CUIT) for 600+ accounts. | `Java`, `Data Parsing`, `CSV` |
-| **Industrial Telemetry & Counting** | Real-time physical production counter with microcontrollers and optical sensors with live metrics. | `ESP32`, `C++`, `Sensors`, `IoT` |
+| **Delivery-note ERP** | Paperless delivery notes: 4,300+ recorded, offline-first, BT thermal printing. | `Flutter`, `Supabase`, `PostgreSQL` |
+| **Bank Reconciliation Engine** | Confidence-scored payment matching with human review and 184 tests. | `Python`, `FastAPI`, `Gemini` |
+| **Vision LLM Invoicing** | Photo/PDF → validated JSON → ARCA VAT ledger files. | `Python`, `Gemini 2.5 Flash`, `Telegram` |
+| **MCP Server** | Natural-language DB operations with 23 audited tools under RLS. | `Python`, `FastMCP`, `PostgreSQL` |
+| **SportsApp** | Native Android app with its own backend: live scores for 5 sports over SSE, offline cache with Room. | `Kotlin`, `Jetpack Compose`, `Ktor`, `PostgreSQL` |
 
 ---
 
-### Education & Credentials
+### Education & Languages
 
-- 🎓 **Information Systems Engineering (Ingeniería en Sistemas de Información)** — *Universidad Tecnológica Nacional (UTN FRM)* `(4th year, ongoing)`
-- 📜 **English C1 Certificate · TOEFL iBT** — *Instituto Amicana* `(2015 – 2019)`
-- 💼 **Full CV Downloads**: Available in English (`/public/cv/CV-Martin-Porollan-EN.pdf`) and Spanish (`/public/cv/CV-Martin-Porollan-ES.pdf`).
+- 🎓 **Information Systems Engineering** — *Universidad Tecnológica Nacional (UTN FRM)* `(4th year, ongoing)`
+- 📜 **English C1 · TOEFL iBT** — *Instituto Amicana* `(2015 – 2019)`
+- 🗣️ Spanish (native) · English (C1)
 
 ---
 
@@ -83,9 +84,9 @@ languages.add("English (C1 Advanced - TOEFL iBT)");
 
 This repository hosts my interactive web portfolio with an industrial factory theme, built with **Next.js 16**, **Tailwind CSS**, and **Framer Motion**:
 
-- 🚪 **Interactive Plant Blueprint**: Visual schematic of 6 interactive sectors, each revealing project architecture and business impact.
+- 🚪 **Interactive Plant Blueprint**: Visual schematic of 7 interactive sectors, each revealing project architecture and business impact.
 - ⚙️ **Factory Simulator**: Mini puzzle game simulating production lines and logistics logic.
-- 📋 **Custom Work Order (CV Generator)**: Interactive builder to filter skills and download tailored CVs.
+- 🧪 **R&D Lab & Toolbox**: Side projects and a skills toolbox, plus CV downloads in Spanish and English.
 - 🚨 **Emergency Stop & Visit Counter**: Quick contact action panel and live visitor telemetry.
 
 ```bash

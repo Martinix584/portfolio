@@ -28,9 +28,9 @@ const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Martín Porollan · Automatización, Full Stack e IA",
+  title: "Martín Porollan · Datos, Analytics e IA aplicada",
   description:
-    "Portfolio de Martín Porollan: convierto procesos manuales en sistemas que funcionan solos. Java, Python, .NET, Flutter, IA aplicada e IoT industrial.",
+    "Portfolio de Martín Porollan: convierto procesos manuales en sistemas que funcionan solos. SQL y PostgreSQL, ETL, Python, Flutter e IA aplicada (Gemini, MCP).",
   openGraph: {
     title: "Martín Porollan · Portfolio",
     description: "Convierto procesos manuales en sistemas que funcionan solos.",

@@ -98,7 +98,7 @@ function Lab() {
 function Production({ count }: { count: number }) {
   return (
     <>
-      {/* Cinta con unidades que cruzan las barreras ópticas */}
+      {/* Cinta de registros que cruzan los controles de validación del ETL */}
       <rect x="-80" y="70" width="360" height="14" className="fill-[#26292d]" />
       <line x1="-80" y1="70" x2="280" y2="70" stroke="#50555c" strokeWidth="1.5" />
       <line x1="-80" y1="84" x2="280" y2="84" stroke="#50555c" strokeWidth="1.5" />
@@ -116,10 +116,10 @@ function Production({ count }: { count: number }) {
         </g>
       ))}
       <line x1="82" y1="60" x2="122" y2="60" stroke="var(--red)" strokeWidth="1.5" className="sc-beam" />
-      {/* ESP32 + contador */}
+      {/* Contador de valores validados */}
       <g transform="translate(142 12)">
         <rect x="0" y="0" width="52" height="30" rx="3" className="fill-[#0b0c0d]" stroke={STROKE} />
-        <text x="5" y="10" className="fill-muted font-mono text-[6px]">ESP32 · UNID.</text>
+        <text x="5" y="10" className="fill-muted font-mono text-[6px]">ETL · OK</text>
         <text x="5" y="24" className="fill-safety font-mono text-[12px] font-semibold tabular-nums">
           {String(count).padStart(5, "0")}
         </text>
@@ -251,16 +251,16 @@ function DataCenter() {
           </g>
         ))}
       </g>
-      {/* Hub MCP y apps conectadas */}
+      {/* Hub MCP y herramientas expuestas */}
       <g transform="translate(96 48)">
         <rect x="0" y="0" width="30" height="18" rx="9" className="fill-safety" />
         <text x="15" y="12.5" textAnchor="middle" className="fill-black font-mono text-[7px] font-bold">MCP</text>
       </g>
       <path d="M70 57 H96" stroke="var(--yellow)" strokeWidth="1.5" strokeDasharray="3 3" className="sc-flow" />
       {[
-        { y: 18, label: "PORTAL" },
-        { y: 52, label: "FÁBRICA" },
-        { y: 86, label: "QR" },
+        { y: 18, label: "COBROS" },
+        { y: 52, label: "REMITOS" },
+        { y: 86, label: "AUDIT" },
       ].map((n) => (
         <g key={n.label}>
           <path d={`M126 57 C 140 57, 140 ${n.y + 7}, 150 ${n.y + 7}`} stroke="var(--steel)" strokeWidth="1.5" fill="none" strokeDasharray="3 3" className="sc-flow" />
@@ -274,13 +274,13 @@ function DataCenter() {
   );
 }
 
-/** Contador de producción que avanza al ritmo de las cajas (una cada 1,5 s). */
+/** Contador de valores validados al ritmo de las cajas (una cada 1,5 s); se detiene en 5.220, el total real. */
 function useUnitCounter(active: boolean) {
-  const [count, setCount] = useState(3187);
+  const [count, setCount] = useState(5160);
   useEffect(() => {
     if (!active) return;
     const id = setInterval(() => {
-      if (!document.documentElement.classList.contains("halted")) setCount((c) => c + 1);
+      if (!document.documentElement.classList.contains("halted")) setCount((c) => Math.min(c + 1, 5220));
     }, 1500);
     return () => clearInterval(id);
   }, [active]);

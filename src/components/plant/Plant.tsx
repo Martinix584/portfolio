@@ -17,10 +17,10 @@ const LAYOUT: Record<string, { m: Rect; d: Rect }> = {
   conciliacion: { m: { x: 2, y: 2, w: 47, h: 15 }, d: { x: 1, y: 2, w: 31, h: 29 } },
   arca: { m: { x: 51, y: 2, w: 47, h: 15 }, d: { x: 34, y: 2, w: 31, h: 29 } },
   vision: { m: { x: 2, y: 19, w: 96, h: 14 }, d: { x: 67, y: 2, w: 32, h: 29 } },
-  iot: { m: { x: 2, y: 35, w: 96, h: 14 }, d: { x: 51, y: 35, w: 48, h: 25 } },
+  migracion: { m: { x: 2, y: 35, w: 96, h: 14 }, d: { x: 51, y: 35, w: 48, h: 25 } },
   erp: { m: { x: 2, y: 51, w: 47, h: 16 }, d: { x: 1, y: 35, w: 48, h: 25 } },
   servicio: { m: { x: 2, y: 69, w: 96, h: 14 }, d: { x: 1, y: 63, w: 48, h: 25 } },
-  ada: { m: { x: 51, y: 51, w: 47, h: 16 }, d: { x: 51, y: 63, w: 48, h: 25 } },
+  mcp: { m: { x: 51, y: 51, w: 47, h: 16 }, d: { x: 51, y: 63, w: 48, h: 25 } },
 };
 const ROAD = { m: { y: 85, h: 10 }, d: { y: 91, h: 7 } };
 
